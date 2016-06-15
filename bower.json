@@ -1,6 +1,6 @@
 {
-  "name": "Skeletor.component-loader",
-  "main": "Skeletor.component-loader.js",
+  "name": "skeletor.component-loader",
+  "main": "skeletor.component-loader.js",
   "homepage": "https://github.com/delphic-digital/Skeletor.component-loader",
   "authors": [
     "Jeff <jmills@delphicdigital.com>"
