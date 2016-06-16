@@ -6,21 +6,15 @@
 
 define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 
-	var ComponentLoader = function(element, options){
-		this.options = $.extend({}, this.defaults, options);
-		this.$element = element || $(document);
-		this._init();
-		Skeletor.instantiatePlugin(this);
-	};
+	function ComponentLoader(element, options) {
+		ComponentLoader.__super__.call(this, element, options, ComponentLoader.DEFAULTS);
+	}
 
-	// now we define the prototype
-	ComponentLoader.prototype = {
-		name: 'ComponentLoader',
-		version: '1.0.0',
-		defaults: {},
-		constructor: ComponentLoader,
+	ComponentLoader.VERSION = '2.0.0';
+	ComponentLoader.DEFAULTS =  {}
 
-		_init: function(){
+	Skeletor.Plugin.create(ComponentLoader, {
+		_init: function(element) {
 			var _this = this;
 			var components = $.map($('[data-component]'), function(el){
 				return {context: $(el).data('component-context') || null, name: 'components/'+$(el).data('component')};
@@ -61,7 +55,6 @@ define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 				}
 			});
 		},
-
 		_loadComponent: function(components){
 			var componentsArr = components.split(',');
 
@@ -74,7 +67,6 @@ define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 				console.error(failedId + ' couldn\'t be found! Does the file exist?')
 			})
 		},
-
 		_mergeByContext: function(arr){ //http://stackoverflow.com/questions/19118016/merge-values-of-array-by-duplicate-keys
 			var temp = {};
 			for (var i=0; i<arr.length; i++) {
@@ -86,9 +78,8 @@ define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 			}
 			return arr;
 		}
-	}
+	});
 
-	Skeletor.registerPlugin(ComponentLoader);
-	new ComponentLoader();
+	new ComponentLoader()
 
 });
