@@ -1,3 +1,3 @@
-# Skeletor.component-loader
+# Skeletor.util.componentLoader
 
-Show an unobstrusive notification bar if your browser is out dated.
+Component loader for Skeletor framework
