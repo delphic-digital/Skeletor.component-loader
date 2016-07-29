@@ -10,7 +10,7 @@ define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 		ComponentLoader.__super__.call(this, element, options, ComponentLoader.DEFAULTS);
 	}
 
-	ComponentLoader.VERSION = '2.0.0';
+	ComponentLoader.VERSION = '0.2.0';
 	ComponentLoader.DEFAULTS =  {}
 
 	Skeletor.Plugin.create(ComponentLoader, {
