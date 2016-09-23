@@ -10,7 +10,7 @@ define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 		ComponentLoader.__super__.call(this, element, options, ComponentLoader.DEFAULTS);
 	}
 
-	ComponentLoader.VERSION = '0.2.0';
+	ComponentLoader.VERSION = '0.2.1';
 	ComponentLoader.DEFAULTS =  {}
 
 	Skeletor.Plugin.create(ComponentLoader, {
@@ -20,6 +20,11 @@ define(['jquery', 'skeletor.core', 'onMediaQuery'],function($, Skeletor, MQ){
 				return {context: $(el).data('component-context') || null, name: 'components/'+$(el).data('component')};
 			});
 			var contexts = this._mergeByContext(components);
+
+			//Init onMediaQuery if it isn't already
+			if(!MQ.callbacks){
+				MQ.init();
+			}
 
 			$.each(contexts, function(i, component){
 				if(component.context != 'null'){
